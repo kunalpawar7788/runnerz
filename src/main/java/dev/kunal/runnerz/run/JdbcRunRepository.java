@@ -1,5 +1,6 @@
 package dev.kunal.runnerz.run;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class JdbcRunRepository {
     }
 
     public List<Run> findAll() {
-        return jdbcClient.sql("Select * from run")
+        return jdbcClient.sql("SELECT * FROM Run")
                 .query(Run.class)
                 .list();
     }
@@ -36,3 +37,4 @@ public class JdbcRunRepository {
     }
 
 }
+

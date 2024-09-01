@@ -2,7 +2,6 @@ package dev.kunal.runnerz;
 
 import dev.kunal.runnerz.run.Location;
 import dev.kunal.runnerz.run.Run;
-import dev.kunal.runnerz.run.RunRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -28,12 +27,11 @@ public class RunnerzApplication {
 
 	}
 	@Bean
-	CommandLineRunner runner(RunRepository RunRepository) {
+	CommandLineRunner runner() {
 		return args -> {
 			Run run = new Run(1, "First Run", LocalDateTime.now(),
 					LocalDateTime.now().plus(1, ChronoUnit.HOURS),
 					5, Location.OUTDOOR);
-			RunRepository.create(run);
 			log.info("Run : " + run);
 		};
 	}
